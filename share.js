@@ -34,7 +34,7 @@ function loadURL() {
     // downloadFile0.innerHTML = `Download ${filename}`
     downloadFile0.download = filename
     downloadFile0.style.display = 'inline'
-
+    sharebtn0.style.display = 'inline'
     dragdropMessage.style.display = 'none'
 }
 

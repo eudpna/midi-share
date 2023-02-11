@@ -105,6 +105,8 @@ margin: 4px;
 }
 
 #sharebtn {
+  display: none;
+  color: black;
   margin-top: 8px;
   font-size: 0.9rem;
   border: solid 1px #888;

@@ -72,6 +72,7 @@ function midiFileLoader() {
         downloadFile0.href = e.target.result
         downloadFile0.download = tmp_filename
         downloadFile0.style.display = 'inline'
+        sharebtn0.style.display = 'inline'
     }    
 
     if (fileInput0) {
