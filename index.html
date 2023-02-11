@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  </meta>
+  <title>MIDI Share</title>
+  <link rel="stylesheet" href="./style.css">
+  <!-- <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.22.0/es6/core.js,npm/focus-visible@5">
+      </script> -->
+  <script src="./dependencies/combined.js"></script>
+</head>
+
+<body id="drop-zone">
+
+  <div style="padding:5px; position:relative;">
+    <div style="display:inline-block;">
+      MIDI Share
+    </div>
+
+    <div style="display:inline-block;position:absolute;right:0;text-align:right;padding-right:7px;">
+      <a href="https://github.com/eudpna/midi-share" target="_blank" rel="noopener noreferrer"
+      style="font-size:0.9rem;">
+        GitHub
+      </a>
+    </div>
+
+    <div>
+      <div style="
+        max-width: 1000px;
+        margin: auto;
+      ">
+        <section id="main">
+
+          <div id="dragdrop-message">
+            Drag & Drop MIDI file here.
+          </div>
+
+          <midi-visualizer id="visualizer0"></midi-visualizer>
+          <div style="padding:5px;">
+            <midi-player id="player" sound-font visualizer="#main midi-visualizer"
+              style="width:100%;;"></midi-player>
+          </div>
+        </section>
+
+        <div style="padding: 5px;">
+          <label>
+            <input type="file" name="midiFile" id="midiFile" accept="audio/midi, audio/x-midi"
+              class="js-upload-file">Select file
+          </label>
+          <div class="js-upload-filename"></div>
+          <div class="fileclear js-upload-fileclear">Clear selected file</div>
+        </div>
+
+        <div>
+          <button id="sharebtn" onclick="getShareLink()">
+            Get share URL
+          </button>
+          <span id="copymsg">
+            Copied to clipboard.
+          </span>
+        </div>
+
+        <div style="padding-bottom: 40px;">
+            <a id="downloadFile" href="" download>Download MIDI file</a>
+        </div>
+        
+      </div>
+
+      <div id="curtain">
+        Drop MIDI file here.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const main0 = document.getElementById('main')
+    const dragdropMessage = document.getElementById('dragdrop-message')
+    const fileInput0 = document.getElementById('midiFile');
+    const visualizer0 = document.getElementById('visualizer0')
+    const player0 = document.getElementById('player')
+    const copymsg = document.getElementById('copymsg')
+    const jsUploadFile0 = document.getElementsByClassName
+    ('js-upload-file')[0]
+    const fileName0 = document.getElementsByClassName('js-upload-filename')[0]
+    const downloadFile0 = document.getElementById('downloadFile')
+  </script>
+
+  <!-- <script
+    src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.5.0"></script> -->
+  <script src="./dependencies/combined1.js"></script>
+  <script type="text/javascript" src="./share.js" charset="utf-8"></script>
+  <script src="./main.js" type="text/javascript" charset="utf-8">
+  </script>
+  <script type="text/javascript" src="./dragdrop.js" charset="utf-8"></script>
+
+</body>
+
+</html>
