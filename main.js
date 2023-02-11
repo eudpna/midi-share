@@ -13,18 +13,19 @@ function widthSetter() {
     vis.config.noteHeight = 8
 
     const setWidth = () => {
-        const per = main0.offsetWidth / 480
-        vis.style.transformOrigin = 'left'
         const els = Array.from(document.getElementsByTagName('svg'))
-
         if (!els.length) return
-        const el = els[0]
-        const svgWidth = el.getBoundingClientRect().width
+        const svg0 = els[0]
+        svg0.style.transformOrigin = 'left'
+        const svgWidth = svg0.getBoundingClientRect().width
+        const per = main0.offsetWidth / svgWidth
 
-        if (svgWidth < main0.offsetWidth) {
-            vis.style.transform = `scale(${per}, 1)`
+        if (svgWidth <= main0.offsetWidth) {
+            if (per > 1) {
+                svg0.style.transform = `scale(${per}, 1)`
+            }
         } else {
-            vis.style.transform = `scale(1, 1)`
+            svg0.style.transform = `scale(1, 1)`
         }
     }
 
@@ -67,12 +68,17 @@ function midiFileLoader() {
         vis.src = e.target.result
         player.src = e.target.result
         const url = makeURL(e.target.result, tmp_filename)
-        widthSetter()
         // downloadFile0.innerHTML = `Download ${filename}`
         downloadFile0.href = e.target.result
         downloadFile0.download = tmp_filename
         downloadFile0.style.display = 'inline'
-        sharebtn0.style.display = 'inline'
+        sharebtn0.style.display = 'inline';
+        widthSetter();
+        [300, 500, 1000, 1500, 2000, 2500, 3000].map((time) => {
+            window.setTimeout(() => {
+                widthSetter()
+            }, time);
+        })
     }    
 
     if (fileInput0) {
