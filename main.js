@@ -17,12 +17,12 @@ function widthSetter() {
         if (!els.length) return
         const svg0 = els[0]
         svg0.style.transformOrigin = 'left'
-        const svgWidth = svg0.getBoundingClientRect().width
+        const svgWidth = svg0.getBBox().width
         const per = main0.offsetWidth / svgWidth
 
         if (svgWidth <= main0.offsetWidth) {
             if (per > 1) {
-                svg0.style.transform = `scale(${per}, 1)`
+                 svg0.style.transform = `scale(${per}, 1)`
             }
         } else {
             svg0.style.transform = `scale(1, 1)`
@@ -39,20 +39,23 @@ function widthSetter() {
 }
 
 window.addEventListener('mousemove', widthSetter)
-window.addEventListener('click', widthSetter)
-window.addEventListener('touchstart', widthSetter)
+window.addEventListener('click', setWidthForce)
+window.addEventListener('touchstart', setWidthForce)
 
 
 window.addEventListener('DOMContentLoaded', () => {
-    widthSetter();
+    setWidthForce()
+})
 
-    [300, 500, 1000, 1500, 2000, 2500, 3000].map((time) => {
+
+function setWidthForce() {
+    widthSetter();
+    [0, 50,100,200, 300, 500, 1000, 1500, 2000, 2500, 3000].map((time) => {
         window.setTimeout(() => {
             widthSetter()
         }, time);
     })
-})
-
+}
 
 widthSetter()
 
@@ -73,14 +76,9 @@ function midiFileLoader() {
         downloadFile0.download = tmp_filename
         downloadFile0.style.display = 'inline'
         sharebtn0.style.display = 'inline';
-        widthSetter();
-        [300, 500, 1000, 1500, 2000, 2500, 3000].map((time) => {
-            window.setTimeout(() => {
-                widthSetter()
-            }, time);
-        })
+       setWidthForce()
     }    
-
+ 
     if (fileInput0) {
         
         fileInput0.addEventListener('change', (e) => {
